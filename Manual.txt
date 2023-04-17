@@ -1,0 +1,24 @@
+Using Raspberry PI Imager: https://www.raspberrypi.com/software/
+OS: Raspberry PI OS Lite x 32
+hostname: radio
+ssh:
+    user: radio
+    pass: radioNEradio
+wifi:
+    ssid: radio
+    pass: radioNEradio
+
+
+
+# TO CONFIGURE AFTER INSTALL
+
+sudo apt update
+sudo apt upgrade -y # Obavezno sa ubacenom wifi karticom
+sudo apt install -y mplayer
+
+crontab -e # Dodati liniju:
+    @reboot sleep 60 && mplayer https://r1.radio4caffe.com/listen/strahinjic_radio/radio.mp3 &> /dev/null # IF mplayer stars before wifi is avalible it will crash, fix this by adding sleep 60.
+
+
+
+sudo reboot
